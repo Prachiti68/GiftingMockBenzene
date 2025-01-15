@@ -24,8 +24,7 @@
         }
         button {
             font-family: 'Poppins', sans-serif;
-            color: #d11771;
-            color: #06326b;
+            
         }
 
         /* Added animations */
@@ -77,7 +76,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background-color: #7e187b;
+            background-color: #ffffff;
             transition: width 0.3s ease;
         }
 
@@ -105,7 +104,7 @@
 <body class="bg-gray-100 overflow-x-hidden">
 
     <!-- Top Sale Bar -->
-    <div class="bg-[#0E1627] text-white text-center py-2 text-sm sale-bar">
+    <div class="bg-[#0E1627] text-white text-center py-2 text-sm sale-bar overflow-hidden">
         Mid-Season Sale: Up to 25% OFF! Use Coupon Code
     </div>
 
@@ -113,98 +112,132 @@
     <nav class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-3">
             <!-- Left: Search -->
-            <div class="flex items-center bg-gray-100 rounded-full px-2 shadow-md search-bar">
+            <div class="hidden md:flex items-center bg-gray-100 rounded-full px-2 shadow-md search-bar">
                 <i class="fas fa-search text-gray-500"></i>
                 <input type="text" placeholder="Search..." class="ml-2 bg-transparent border-none text-sm text-gray-700 placeholder-gray-500">
             </div>
 
             <!-- Center: Logo -->
             <div class="logo">
-                <!-- <h1 class="text-2xl font-bold text-orange-600">GiftBox</h1> -->
-                 <img src="assets/logo.jpg" alt="" srcset="" class="h-12">
+                <img src="assets/logo.jpg" alt="" srcset="" class="h-12">
             </div>
 
             <!-- Right: Icons -->
-            <div class="flex space-x-6 text-gray-600 pl-20">
+            <div class="hidden md:flex space-x-6 text-gray-600 pl-20">
                 <i class="fas fa-user nav-icon"></i>
                 <i class="fas fa-heart nav-icon"></i>
                 <i class="fas fa-shopping-cart nav-icon"></i>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button class="md:hidden text-gray-600" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white w-full">
+            <div class="px-4 py-3 space-y-4">
+                <!-- Mobile Search -->
+                <div class="flex items-center bg-gray-100 rounded-full px-2 shadow-md mb-4">
+                    <i class="fas fa-search text-gray-500"></i>
+                    <input type="text" placeholder="Search..." class="ml-2 bg-transparent border-none text-sm text-gray-700 placeholder-gray-500 w-full py-2">
+                </div>
+                <div class="flex justify-around text-gray-600 mb-4">
+                    <i class="fas fa-user nav-icon"></i>
+                    <i class="fas fa-heart nav-icon"></i>
+                    <i class="fas fa-shopping-cart nav-icon"></i>
+                </div>
+                <a href="#" class="block text-gray-600 hover:text-[#ce0065] py-2">Home</a>
+                <a href="#" class="block text-gray-600 hover:text-[#ce0065] py-2">New Year Gifts</a>
+                <a href="#" class="block text-gray-600 hover:text-[#ce0065] py-2">Shop Gifts</a>
+                <a href="#" class="block text-gray-600 hover:text-[#ce0065] py-2">Make Your Own Hamper</a>
+                <a href="#" class="block text-gray-600 hover:text-[#ce0065] py-2">All Gifts</a>
+                <a href="#" class="block text-gray-600 hover:text-[#ce0065] py-2">New Arrivals</a>
+                <a href="#" class="block text-gray-600 hover:text-[#ce0065] py-2">Corporate Gifting</a>
             </div>
         </div>
     </nav>
 
     <!-- Extended Navigation -->
-    <div class="bg-[#ce0065] shadow-sm flex justify-center items-center">
+    <div style="background-image: url('assets/bg_colourful2.png'); background-size: cover; background-repeat: no-repeat; background-position: center;" class="bg-[#ce0065] shadow-sm hidden md:flex justify-center items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-6 py-3 text-white text-sm">
             <a href="#" class="nav-link hover:text-white">Home</a>
-            <a href="#" class="nav-link hover:text-white ">New Year Gifts</a>
-            <a href="#" class="nav-link hover:text-white ">Shop Gifts</a>
-            <a href="#" class="nav-link hover:text-white ">Make Your Own Hamper</a>
-            <a href="#" class="nav-link hover:text-white ">All Gifts</a>
-            <a href="#" class="nav-link hover:text-white ">New Arrivals</a>
-            <a href="#" class="nav-link hover:text-white ">Corporate Gifting</a>
+            <a href="#" class="nav-link hover:text-white">New Year Gifts</a>
+            <a href="#" class="nav-link hover:text-white">Shop Gifts</a>
+            <a href="#" class="nav-link hover:text-white">Make Your Own Hamper</a>
+            <a href="#" class="nav-link hover:text-white">All Gifts</a>
+            <a href="#" class="nav-link hover:text-white">New Arrivals</a>
+            <a href="#" class="nav-link hover:text-white">Corporate Gifting</a>
         </div>
     </div>
 
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+    </script>
+
     <!-- Hero Section with Carousel -->
-    <div class="relative w-full h-[500px] overflow-hidden">
+    <div class="relative w-full h-[300px] md:h-[500px] overflow-hidden">
         <!-- Carousel container -->
         <div class="carousel-container flex transition-transform duration-500">
             <!-- Slide 1 -->
             <div class="w-full flex-shrink-0 relative">
-                <img src="assets/1.jpeg" alt="Corporate Gift Set" class="w-full h-[500px] object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content">
-                    <h2 class="text-4xl font-bold mb-4">Luxury Corporate Gift Sets</h2>
-                    <p class="text-xl mb-6">Impress your clients with our premium collection</p>
-                    <button class="bg-[#ce0065] text-white px-8 py-3 rounded-full hover:bg-[#99024b] transition-all duration-300 hover:scale-105">Shop Now</button>
+                <img src="assets/1.jpeg" alt="Corporate Gift Set" class="w-full h-[300px] md:h-[500px] object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content px-4 text-center">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-2 md:mb-4">Luxury Corporate Gift Sets</h2>
+                    <p class="text-base md:text-xl mb-4 md:mb-6">Impress your clients with our premium collection</p>
+                    <button class="bg-[#ce0065] text-white px-6 md:px-8 py-2 md:py-3 rounded-full hover:bg-[#99024b] transition-all duration-300 hover:scale-105 text-sm md:text-base">Shop Now</button>
                 </div>
             </div>
 
             <!-- Slide 2 -->
             <div class="w-full flex-shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a" alt="Custom Branded Gifts" class="w-full h-[500px] object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content">
-                    <h2 class="text-4xl font-bold mb-4">Custom Branded Gifts</h2>
-                    <p class="text-xl mb-6">Personalize your corporate gifts with your brand</p>
-                    <button class="hover:bg-[#ce0065] text-white px-8 py-3 rounded-full bg-[#7e187b] transition-all duration-300 hover:scale-105">Customize Now</button>
+                <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a" alt="Custom Branded Gifts" class="w-full h-[300px] md:h-[500px] object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content px-4 text-center">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-2 md:mb-4">Custom Branded Gifts</h2>
+                    <p class="text-base md:text-xl mb-4 md:mb-6">Personalize your corporate gifts with your brand</p>
+                    <button class="hover:bg-[#ce0065] text-white px-6 md:px-8 py-2 md:py-3 rounded-full bg-[#7e187b] transition-all duration-300 hover:scale-105 text-sm md:text-base">Customize Now</button>
                 </div>
             </div>
 
             <!-- Slide 3 -->
             <div class="w-full flex-shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383" alt="Bulk Orders" class="w-full h-[500px] object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content">
-                    <h2 class="text-4xl font-bold mb-4">Bulk Order Benefits</h2>
-                    <p class="text-xl mb-6">Special discounts for large corporate orders</p>
-                    <button class="hover:bg-[#ce0065] text-white px-8 py-3 rounded-full bg-[#7e187b] transition-all duration-300 hover:scale-105">Get Quote</button>
+                <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383" alt="Bulk Orders" class="w-full h-[300px] md:h-[500px] object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content px-4 text-center">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-2 md:mb-4">Bulk Order Benefits</h2>
+                    <p class="text-base md:text-xl mb-4 md:mb-6">Special discounts for large corporate orders</p>
+                    <button class="hover:bg-[#ce0065] text-white px-6 md:px-8 py-2 md:py-3 rounded-full bg-[#7e187b] transition-all duration-300 hover:scale-105 text-sm md:text-base">Get Quote</button>
                 </div>
             </div>
 
             <!-- Slide 4 -->
             <div class="w-full flex-shrink-0 relative">
-                <img src="https://images.unsplash.com/photo-1544441893-675973e31985" alt="Festive Gifts" class="w-full h-[500px] object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content">
-                    <h2 class="text-4xl font-bold mb-4">Festive Corporate Gifts</h2>
-                    <p class="text-xl mb-6">Make celebrations memorable with our festive collections</p>
-                    <button class="hover:bg-[#ce0065] text-white px-8 py-3 rounded-full bg-[#7e187b] transition-all duration-300 hover:scale-105">Explore More</button>
+                <img src="https://images.unsplash.com/photo-1544441893-675973e31985" alt="Festive Gifts" class="w-full h-[300px] md:h-[500px] object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white hero-content px-4 text-center">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-2 md:mb-4">Festive Corporate Gifts</h2>
+                    <p class="text-base md:text-xl mb-4 md:mb-6">Make celebrations memorable with our festive collections</p>
+                    <button class="hover:bg-[#ce0065] text-white px-6 md:px-8 py-2 md:py-3 rounded-full bg-[#7e187b] transition-all duration-300 hover:scale-105 text-sm md:text-base">Explore More</button>
                 </div>
             </div>
         </div>
 
         <!-- Navigation Arrows -->
-        <button class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 hover:scale-110" onclick="moveSlide(-1)">
-            <i class="fas fa-chevron-left text-gray-800"></i>
+        <button class="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white p-1 md:p-2 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 hover:scale-110" onclick="moveSlide(-1)">
+            <i class="fas fa-chevron-left text-gray-800 text-sm md:text-base"></i>
         </button>
-        <button class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 hover:scale-110" onclick="moveSlide(1)">
-            <i class="fas fa-chevron-right text-gray-800"></i>
+        <button class="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white p-1 md:p-2 rounded-full shadow-lg hover:bg-gray-100 transition-all duration-300 hover:scale-110" onclick="moveSlide(1)">
+            <i class="fas fa-chevron-right text-gray-800 text-sm md:text-base"></i>
         </button>
 
         <!-- Dots Navigation -->
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-            <button class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot active" onclick="currentSlide(0)"></button>
-            <button class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot" onclick="currentSlide(1)"></button>
-            <button class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot" onclick="currentSlide(2)"></button>
-            <button class="w-3 h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot" onclick="currentSlide(3)"></button>
+        <div class="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1 md:space-x-2">
+            <button class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot active" onclick="currentSlide(0)"></button>
+            <button class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot" onclick="currentSlide(1)"></button>
+            <button class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot" onclick="currentSlide(2)"></button>
+            <button class="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white opacity-50 hover:opacity-100 transition dot" onclick="currentSlide(3)"></button>
         </div>
     </div>
 
@@ -270,28 +303,29 @@
             </div>
         </div>
     </section>
+
     <!-- Banners -->
-    <section class="container mx-auto px-40 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section class="container mx-auto px-4 md:px-40 py-8 md:py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <!-- Special Collection Banner -->
-            <div class="relative h-[300px] rounded-2xl overflow-hidden group">
+            <div class="relative h-[200px] md:h-[300px] rounded-2xl overflow-hidden group">
                 <img src="assets/6.jpeg" alt="Special Collection" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-[#0E1627] bg-opacity-70 bg-blur-sm flex flex-col items-start justify-center p-10 transition-all duration-300">
-                    <h2 class="text-4xl mb-4 text-gray-200 font-bold">Special Collection</h2>
-                    <p class="text-gray-200 mb-6 max-w-xs">Discover our curated selection of premium gifts for every occasion</p>
-                    <button class="bg-[#ce0065] text-white px-8 py-3 rounded-full hover:bg-[#7e187b] transition-all duration-300 transform hover:scale-105">
+                <div class="absolute inset-0 bg-[#0E1627] bg-opacity-70 bg-blur-sm flex flex-col items-start justify-center p-6 md:p-10 transition-all duration-300">
+                    <h2 class="text-2xl md:text-4xl mb-2 md:mb-4 text-gray-200 font-bold">Special Collection</h2>
+                    <p class="text-sm md:text-base text-gray-200 mb-4 md:mb-6 max-w-xs">Discover our curated selection of premium gifts for every occasion</p>
+                    <button class="bg-[#ce0065] text-white px-6 md:px-8 py-2 md:py-3 rounded-full hover:bg-[#7e187b] transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
                         Explore Now
                     </button>
                 </div>
             </div>
 
             <!-- Sale Banner -->
-            <div class="relative h-[300px] rounded-2xl overflow-hidden group">
+            <div class="relative h-[200px] md:h-[300px] rounded-2xl overflow-hidden group">
                 <img src="assets/11.jpeg" alt="Sale" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-[#0E1627] bg-opacity-50 bg-blur-sm flex flex-col items-start justify-center p-10 transition-all duration-300">
-                    <h2 class="text-4xl mb-4 text-gray-200 font-bold">Season Sale</h2>
-                    <p class="text-gray-200 mb-6 max-w-xs">Up to 50% off on selected premium gifts. Limited time offer!</p>
-                    <button class="bg-[#7e187b] text-white px-8 py-3 rounded-full hover:bg-[#ce0065] transition-all duration-300 transform hover:scale-105">
+                <div class="absolute inset-0 bg-[#0E1627] bg-opacity-50 bg-blur-sm flex flex-col items-start justify-center p-6 md:p-10 transition-all duration-300">
+                    <h2 class="text-2xl md:text-4xl mb-2 md:mb-4 text-gray-200 font-bold">Season Sale</h2>
+                    <p class="text-sm md:text-base text-gray-200 mb-4 md:mb-6 max-w-xs">Up to 50% off on selected premium gifts. Limited time offer!</p>
+                    <button class="bg-[#7e187b] text-white px-6 md:px-8 py-2 md:py-3 rounded-full hover:bg-[#ce0065] transition-all duration-300 transform hover:scale-105 text-sm md:text-base">
                         Shop Sale
                     </button>
                 </div>
@@ -299,245 +333,115 @@
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="container mx-auto px-40 py-16">
-        <h2 class="text-4xl text-center mb-12 text-gray-800">Featured Products</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <!-- Product Card 1 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in]">
-                <div class="relative h-48">
-                    <img src="assets/1.jpeg" alt="Premium Gift Box" class="w-full h-full object-cover">
-                    <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        Featured
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Premium Gift Box</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Luxurious gift box with handpicked premium items.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="ml-2 text-gray-600 text-sm">(4.5)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$199.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <!-- Most Popular Products -->
+    <section class="py-8 md:py-16">
+        <div class="container mx-auto px-4 md:px-40">
+            <h2 class="text-3xl md:text-4xl text-center mb-8 md:mb-12 text-gray-800">Featured Products</h2>
+            
+            <div class="relative">
+                <!-- Navigation Arrows -->
+                <button id="popularPrevBtn" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -ml-12 border-2 border-gray-700 text-white w-10 h-10 rounded-full items-center justify-center shadow-lg hover:border-gray-800 transition-all z-10">
+                    <i class="fas fa-chevron-left text-gray-700"></i>
+                </button>
+                <button id="popularNextBtn" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 -mr-12 border-2 border-gray-700 text-white w-10 h-10 rounded-full items-center justify-center shadow-lg hover:border-gray-800 transition-all z-10">
+                    <i class="fas fa-chevron-right text-gray-700"></i>
+                </button>
 
-            <!-- Product Card 2 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in_0.2s]">
-                <div class="relative h-48">
-                    <img src="assets/2.jpeg" alt="Luxury Hamper" class="w-full h-full object-cover">
-                    <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        Best Seller
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Luxury Hamper</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Elegant hamper with gourmet treats.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                <!-- Products Slider -->
+                <div class="overflow-hidden">
+                    <div id="popularProductsSlider" class="flex flex-col md:flex-row gap-8 transition-transform duration-500">
+                        <!-- Product 1 -->
+                        <div class="w-full md:min-w-[280px] md:w-[280px] animate-[fadeIn_0.6s_ease-in]">
+                            <div class="relative h-[280px] mb-4 overflow-hidden group">
+                                <img src="assets/1.jpeg" alt="Popular Product" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-xl">
+                                <div class="absolute top-3 right-3 bg-gray-800 text-white px-3 py-1 rounded-full text-sm">
+                                    Best Seller
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Luxury Gift Set</h3>
+                            <p class="text-sm text-gray-600 mb-2">Handcrafted premium box</p>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#fac000] text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="ml-2 text-gray-600 text-sm">(128)</span>
+                            </div>
+                            <p class="text-gray-800 font-bold">$149.99</p>
                         </div>
-                        <span class="ml-2 text-gray-600 text-sm">(5.0)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$249.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Product Card 3 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in_0.4s]">
-                <div class="relative h-48">
-                    <img src="assets/3.jpeg" alt="Executive Gift Set" class="w-full h-full object-cover">
-                    <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        New Arrival
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Executive Gift Set</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Premium leather accessories set.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
+                        <!-- Product 2 -->
+                        <div class="w-full md:min-w-[280px] md:w-[280px] animate-[fadeIn_0.6s_ease-in_0.2s]">
+                            <div class="relative h-[280px] mb-4 overflow-hidden group">
+                                <img src="assets/2.jpeg" alt="Popular Product" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-xl">
+                                <div class="absolute top-3 right-3 bg-gray-800 text-white px-3 py-1 rounded-full text-sm">
+                                    Top Rated
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Premium Wine Box</h3>
+                            <p class="text-sm text-gray-600 mb-2">Vintage wine with chocolate pairing</p>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#fac000] text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="ml-2 text-gray-600 text-sm">(95)</span>
+                            </div>
+                            <p class="text-gray-800 font-bold">$199.99</p>
                         </div>
-                        <span class="ml-2 text-gray-600 text-sm">(4.0)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$179.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Product Card 4 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in_0.6s]">
-                <div class="relative h-48">
-                    <img src="assets/4.jpeg" alt="Wellness Package" class="w-full h-full object-cover">
-                    <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        Popular
-                    </div>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Wellness Package</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Curated wellness and self-care items.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                        <!-- Product 3 -->
+                        <div class="w-full md:min-w-[280px] md:w-[280px] animate-[fadeIn_0.6s_ease-in_0.4s]">
+                            <div class="relative h-[280px] mb-4 overflow-hidden group">
+                                <img src="assets/3.jpeg" alt="Popular Product" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-xl">
+                                <div class="absolute top-3 right-3 bg-gray-800 text-white px-3 py-1 rounded-full text-sm">
+                                    New Arrival
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Gourmet Hamper</h3>
+                            <p class="text-sm text-gray-600 mb-2">Artisanal treats and delicacies</p>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#fac000] text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span class="ml-2 text-gray-600 text-sm">(74)</span>
+                            </div>
+                            <p class="text-gray-800 font-bold">$179.99</p>
                         </div>
-                        <span class="ml-2 text-gray-600 text-sm">(4.5)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$159.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product Card 5 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in]">
-                <div class="relative h-48">
-                    <img src="assets/5.jpeg" alt="Premium Gift Box" class="w-full h-full object-cover">
-                    <!-- <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        Featured
-                    </div> -->
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Premium Gift Box</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Luxurious gift box with handpicked premium items.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="ml-2 text-gray-600 text-sm">(4.5)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$199.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Product Card 6 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in_0.2s]">
-                <div class="relative h-48">
-                    <img src="assets/6.jpeg" alt="Luxury Hamper" class="w-full h-full object-cover">
-                    <!-- <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        Best Seller
-                    </div> -->
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Luxury Hamper</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Elegant hamper with gourmet treats.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                        <!-- Product 4 -->
+                        <div class="w-full md:min-w-[280px] md:w-[280px] animate-[fadeIn_0.6s_ease-in_0.6s]">
+                            <div class="relative h-[280px] mb-4 overflow-hidden group">
+                                <img src="assets/4.jpeg" alt="Popular Product" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 rounded-xl">
+                                <div class="absolute top-3 right-3 bg-gray-800 text-white px-3 py-1 rounded-full text-sm">
+                                    Limited Edition
+                                </div>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-1">Deluxe Gift Box</h3>
+                            <p class="text-sm text-gray-600 mb-2">Luxury spa and wellness kit</p>
+                            <div class="flex items-center mb-2">
+                                <div class="flex text-[#fac000] text-sm">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="ml-2 text-gray-600 text-sm">(156)</span>
+                            </div>
+                            <p class="text-gray-800 font-bold">$229.99</p>
                         </div>
-                        <span class="ml-2 text-gray-600 text-sm">(5.0)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$249.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Product Card 7 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in_0.4s]">
-                <div class="relative h-48">
-                    <img src="assets/7.jpeg" alt="Executive Gift Set" class="w-full h-full object-cover">
-                    <!-- <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        New Arrival
-                    </div> -->
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Executive Gift Set</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Premium leather accessories set.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <span class="ml-2 text-gray-600 text-sm">(4.0)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$179.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Product Card 8 -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 animate-[fadeIn_0.6s_ease-in_0.6s]">
-                <div class="relative h-48">
-                    <img src="assets/8.jpeg" alt="Wellness Package" class="w-full h-full object-cover">
-                    <!-- <div class="absolute top-3 right-3 bg-[#7e187b] text-white px-2 py-1 rounded-full text-xs">
-                        Popular
-                    </div> -->
-                </div>
-                <div class="p-4">
-                    <h3 class="text-lg font-bold text-gray-800 mb-1">Wellness Package</h3>
-                    <p class="text-gray-600 mb-3 text-sm">Curated wellness and self-care items.</p>
-                    <div class="flex items-center mb-3">
-                        <div class="flex text-[#fac000] text-sm">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="ml-2 text-gray-600 text-sm">(4.5)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xl font-bold text-[#7e187b]">$159.99</span>
-                        <button class="bg-[#0E1627] text-white px-4 py-1.5 rounded-full hover:bg-[#ce0065] transition-all duration-300 text-sm">
-                            Add to Cart
-                        </button>
                     </div>
                 </div>
             </div>
@@ -594,28 +498,59 @@
             <h2 class="text-4xl text-center mb-12 text-gray-800">Our Corporate Gifting Clientele</h2>
             <div class="relative overflow-hidden">
                 <!-- Logo Slider Container -->
-                <div class="flex animate-[scroll_20s_linear_infinite] space-x-12">
+                <div id="logoSlider" class="flex space-x-12">
                     <!-- Logo Group 1 -->
-                    <div class="flex space-x-12 items-center justify-center">
-                        <img src="assets/client1.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
-                        <img src="assets/client2.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
-                        <img src="assets/client3.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
-                        <img src="assets/client4.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
-                        <img src="assets/client5.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
-                        <img src="assets/client6.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
-                        <img src="assets/client1.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
-                        <img src="assets/client2.png" alt="Client Logo" class="h-12 w-auto hover:grayscale grayscale-0 transition-all duration-300">
+                    <div class="flex-shrink-0 flex space-x-12 items-center">
+                        <img src="assets/client1.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client2.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client3.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client4.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client5.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client6.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
                     </div>
                     <!-- Logo Group 2 (Duplicate for seamless loop) -->
-                    <!-- <div class="flex space-x-12 items-center">
-                        <img src="assets/client1.png" alt="Client Logo" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="assets/client2.png" alt="Client Logo" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="assets/client3.png" alt="Client Logo" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="assets/client4.png" alt="Client Logo" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="assets/client5.png" alt="Client Logo" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                        <img src="assets/client6.png" alt="Client Logo" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                    </div> -->
+                    <div class="flex-shrink-0 flex space-x-12 items-center">
+                        <img src="assets/client1.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client2.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client3.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client4.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client5.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client6.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                    </div>
+                    <!-- Logo Group 3 (Duplicate for seamless loop) -->
+                    <div class="flex-shrink-0 flex space-x-12 items-center">
+                        <img src="assets/client1.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client2.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client3.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client4.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client5.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                        <img src="assets/client6.png" alt="Client Logo" class="h-12 w-auto  transition-all duration-300">
+                    </div>
                 </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const slider = document.getElementById('logoSlider');
+                        const firstGroup = slider.children[0];
+                        let position = 0;
+                        const speed = 1; // Adjust speed as needed
+                        
+                        function animate() {
+                            position -= speed;
+                            
+                            // When first group is fully scrolled, reset position
+                            if (-position >= firstGroup.offsetWidth) {
+                                position = 0;
+                            }
+                            
+                            // Apply transform with hardware acceleration
+                            slider.style.transform = `translate3d(${position}px, 0, 0)`;
+                            requestAnimationFrame(animate);
+                        }
+                        
+                        // Start animation
+                        animate();
+                    });
+                </script>
             </div>
         </div>
     </section>
@@ -639,7 +574,7 @@
                 <!-- Testimonial 1 -->
                 <div class="bg-white p-6 rounded-xl shadow-lg">
                     <div class="flex items-center mb-4">
-                        <img src="assets/quotes.png" alt="Client" class="w-12 h-12 rounded-full object-cover">
+                        <img src="assets/quotes.png" alt="Client" class="w-12 h-12 rounded-full object-cover">                                               
                         <div class="ml-4">
                             <h4 class="font-bold text-gray-800">Sarah Johnson</h4>
                             <p class="text-gray-600 text-sm">Marketing Director, TechCorp</p>
@@ -675,30 +610,32 @@
         </div>
     </section>
 
- 
-
-    
 
     <!-- Contact Section -->
     <section class="py-16">
-        <div class="container mx-auto px-4 md:px-40">
-            <div class="bg-white rounded-xl shadow-lg p-8">
-                <h2 class="text-4xl text-center mb-8 text-gray-800">Get In Touch</h2>
-                <form class="max-w-2xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <input type="text" placeholder="Name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b]">
-                        <input type="text" placeholder="Company Name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b]">
-                    </div>
-                    <input type="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b] mb-6">
-                    <select class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b] mb-6">
-                        <option value="">Select Product Interest</option>
-                        <option value="corporate">Corporate Gifts</option>
-                        <option value="custom">Custom Gifts</option>
-                        <option value="bulk">Bulk Orders</option>
-                    </select>
-                    <textarea placeholder="Message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b] mb-6"></textarea>
-                    <button class="w-full bg-[#7e187b] text-white py-3 rounded-lg hover:bg-[#ce0065] transition-all duration-300">Submit Inquiry</button>
-                </form>
+        <div class="container mx-auto px-4 md:px-60">
+            <div class="bg-white rounded-xl shadow-lg  flex">
+                <div class="w-1/4">
+                    <img src="assets/bg_colourful4.png" alt="Contact decoration" class="h-full w-full object-cover rounded-l-xl">
+                </div>
+                <div class="w-3/4 px-8">
+                    <h2 class="text-4xl text-center mb-8 text-gray-800 pt-12">Get In Touch</h2>
+                    <form class="max-w-2xl mx-auto pb-12">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" placeholder="Name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b]">
+                            <input type="text" placeholder="Company Name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b]">
+                        </div>
+                        <input type="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b] mb-6">
+                        <select class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b] mb-6">
+                            <option value="">Select Product Interest</option>
+                            <option value="corporate">Corporate Gifts</option>
+                            <option value="custom">Custom Gifts</option>
+                            <option value="bulk">Bulk Orders</option>
+                        </select>
+                        <textarea placeholder="Message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-[#7e187b] mb-6"></textarea>
+                        <button class="w-full bg-[#7e187b] text-white py-3 rounded-lg hover:bg-[#ce0065] transition-all duration-300 ">Submit Inquiry</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -714,84 +651,85 @@
         </div>
         
     </section>
+    
     <!-- Footer -->
-<footer class="relative bg-[#FAF7F0] pt-16 pb-8">
-    <div class="container mx-auto px-4 md:px-40 relative z-10">
-        <!-- Footer Content -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <!-- Company Info -->
-            <div>
-                <h3 class="text-xl font-bold text-gray-800 mb-4">GiftBox</h3>
-                <p class="text-gray-600 mb-4">Premium corporate and personal gifting solutions for all occasions.</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-[#7e187b]">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-[#7e187b]">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-[#7e187b]">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-[#7e187b]">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+    <footer class="relative bg-[#FAF7F0] pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-40 relative z-10">
+            <!-- Footer Content -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">GiftBox</h3>
+                    <p class="text-gray-600 mb-4">Premium corporate and personal gifting solutions for all occasions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-[#7e187b]">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-[#7e187b]">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-[#7e187b]">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 hover:text-[#7e187b]">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">About Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Shop Gifts</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Corporate Gifting</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Custom Orders</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Shipping Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Returns & Exchanges</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">FAQ</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Newsletter</h4>
+                    <p class="text-gray-600 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:border-[#7e187b]">
+                        <button class="bg-[#7e187b] text-white px-4 py-2 rounded-r-lg hover:bg-[#ce0065] transition-all duration-300">
+                            Subscribe
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Quick Links -->
-            <div>
-                <h4 class="text-lg font-bold text-gray-800 mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">About Us</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Shop Gifts</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Corporate Gifting</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Custom Orders</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Customer Service -->
-            <div>
-                <h4 class="text-lg font-bold text-gray-800 mb-4">Customer Service</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Shipping Policy</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Returns & Exchanges</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">FAQ</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Privacy Policy</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-[#7e187b]">Terms of Service</a></li>
-                </ul>
-            </div>
-
-            <!-- Newsletter -->
-            <div>
-                <h4 class="text-lg font-bold text-gray-800 mb-4">Newsletter</h4>
-                <p class="text-gray-600 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
-                <div class="flex">
-                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:border-[#7e187b]">
-                    <button class="bg-[#7e187b] text-white px-4 py-2 rounded-r-lg hover:bg-[#ce0065] transition-all duration-300">
-                        Subscribe
-                    </button>
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-200 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-600 text-sm mb-4 md:mb-0">&copy; 2024 GiftBox. All rights reserved.</p>
+                    <div class="flex space-x-4">
+                        <img src="assets/visa.png" alt="Visa" class="h-8">
+                        <img src="assets/mastercard.png" alt="Mastercard" class="h-8">
+                        <img src="assets/applepay.png" alt="American Express" class="h-8">
+                        <img src="assets/upi.png" alt="PayPal" class="h-8">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Bottom Bar -->
-        <div class="border-t border-gray-200 pt-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-600 text-sm mb-4 md:mb-0">&copy; 2024 GiftBox. All rights reserved.</p>
-                <div class="flex space-x-4">
-                    <img src="assets/visa.png" alt="Visa" class="h-8">
-                    <img src="assets/mastercard.png" alt="Mastercard" class="h-8">
-                    <img src="assets/applepay.png" alt="American Express" class="h-8">
-                    <img src="assets/upi.png" alt="PayPal" class="h-8">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Background Image -->
-</footer>
+        <!-- Background Image -->
+    </footer>
 
     <!-- JavaScript for Carousel & logos -->
     <script>
